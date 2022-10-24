@@ -23,3 +23,11 @@ module "ec2" {
   user_data = file("./files/userdata.sh")
   amis      = "ami-09d3b3274b6c5d4aa"
 }
+
+module "vpc" {
+  source    = "git@github.com:thisiscaetano/terraform-aws-vpc.git"
+  vpc_name = "dev"
+  vpc_cidr = "172.32.0.0/16"
+  nat_count = 2
+
+}
